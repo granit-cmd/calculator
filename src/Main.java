@@ -31,6 +31,7 @@ public class Main {
         } else {
 
             System.out.println("Error something went wrong, Вам необходимо вводить числа с 1 до 10 в формате a+b ");
+            return;
         }
         System.out.println(res);
 
