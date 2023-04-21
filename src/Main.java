@@ -16,7 +16,6 @@ public class Main {
             switch (operation) {
                 case '+':
                      res = a+b;
-                    System.out.println(res);
                     break;
                 case '-':
                     res = a-b;
