@@ -5,7 +5,7 @@ public class Main {
    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите выражение в формате a + b:");
+        System.out.print("Введите выражение в формате a + b, a - b, a * b, a / b :");
         String expression = scanner.nextLine();
 
         String[] values = expression.split(" ");
