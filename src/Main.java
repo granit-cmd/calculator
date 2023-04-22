@@ -2,39 +2,56 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        int res = 0;
-        int a = Character.getNumericValue(str.charAt(0));
-        int b = Character.getNumericValue(str.charAt(2));
-        char operation = str.charAt(1);
-        if (str.length() == 3 && (0<a&b<11)) {
+   public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Введите выражение в формате a + b:");
+        String expression = scanner.nextLine();
 
+        String[] values = expression.split(" ");
 
-            switch (operation) {
-                case '+':
-                     res = a+b;
-                    break;
-                case '-':
-                    res = a-b;
-                    break;
-                case '*':
-                    res = a*b;
-                    break;
-                case '/':
-                        res = a/b;
-                    break;
-            }
-
-        } else {
-
-            System.out.println("Error something went wrong, Вам необходимо вводить числа с 1 до 10 в формате a+b ");
+        if (values.length != 3) {
+            System.out.println("Ошибка: неверный формат выражения");
             return;
         }
-        System.out.println(res);
 
+        int a, b;
+        try {
+            a = Integer.parseInt(values[0]);
+            b = Integer.parseInt(values[2]);
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка: неверный формат чисел");
+            return;
+        }
 
+        if (a < 1 || a > 10 || b < 1 || b > 10) {
+            System.out.println("Ошибка: числа должны быть от 1 до 10");
+            return;
+        }
+
+        int result;
+        switch (values[1]) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                if (b == 0) {
+                    System.out.println("Ошибка: деление на ноль");
+                    return;
+                }
+                result = a / b;
+                break;
+            default:
+                System.out.println("Ошибка: неверный оператор");
+                return;
+        }
+
+        System.out.println("Результат: " + result);
     }
 }
